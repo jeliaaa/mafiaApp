@@ -15,6 +15,10 @@ export default function TabLayout() {
         name="explore"
         options={{ headerShown: false}}
       />
+      <Stack.Screen
+        name="players"
+        options={{ headerShown: false}}
+      />
     </Stack>
   );
 }
