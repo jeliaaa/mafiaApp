@@ -56,22 +56,23 @@
 //   },
 // });
 
-import { Link } from 'expo-router';
+import { Link, useRouter } from 'expo-router';
 import { StyleSheet, View, Text, Pressable, ImageBackground } from 'react-native';
 
 export default function HomeScreen() {
+  const router = useRouter();
   return (
     <ImageBackground style={styles.container} source={require("../../assets/images/home_bg.png")} resizeMode='cover'>
       <View style={styles.containerInner}>
-        <Pressable style={styles.button} onPress={() => console.log('Button pressed')}>
-          <Link style={styles.link} href={'/players'}>
+        <Pressable style={styles.button} onPress={() => router.push("/players")}>
+          <Text style={styles.link}>
             დაწყებასა
-          </Link>
+          </Text>
         </Pressable>
-        <Pressable style={styles.button} onPress={() => console.log('Button pressed')}>
-          <Link style={styles.link} href={'/players'}>
+        <Pressable style={styles.button} onPress={() => router.push("/players")}>
+          <Text style={styles.link}>
             პარამეტრები
-          </Link>
+          </Text>
         </Pressable>
       </View>
     </ImageBackground>
@@ -100,17 +101,13 @@ const styles = StyleSheet.create({
     backgroundColor: 'black',
     color: 'red',
     fontWeight: 'bold',
+    display: "flex",
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 20
   },
   link: {
-    width: '100%',
-    height: '100%',
     color: 'red',
-    justifyContent: 'center',
-    alignItems: 'center',
-    textAlign: 'center',
     textAlignVertical: 'center'
   },
   text: {
