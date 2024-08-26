@@ -57,7 +57,7 @@
 // });
 
 import { Link, useRouter } from 'expo-router';
-import { StyleSheet, View, Text, Pressable, ImageBackground } from 'react-native';
+import { StyleSheet, View, Text, Pressable, ImageBackground, Image } from 'react-native';
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -65,14 +65,18 @@ export default function HomeScreen() {
     <ImageBackground style={styles.container} source={require("../../assets/images/home_bg.png")} resizeMode='cover'>
       <View style={styles.containerInner}>
         <Pressable style={styles.button} onPress={() => router.push("/players")}>
-          <Text style={styles.link}>
+          <Image style={styles.bullet} width={22} height={52} resizeMode='cover' source={require("../../assets/icons/bullet.webp")}/>
+          <Text style={styles.startText}>
             დაწყებასა
           </Text>
+          <Image style={styles.blood} width={36} height={45} resizeMode='cover' source={require("../../assets/icons/blood.webp")}/>
         </Pressable>
         <Pressable style={styles.button} onPress={() => router.push("/players")}>
-          <Text style={styles.link}>
+          <Image style={styles.settings} width={45} height={45} resizeMode='cover' source={require("../../assets/icons/settings.webp")}/>
+          <Text style={styles.settingText}>
             პარამეტრები
           </Text>
+          <Image style={styles.blood} width={36} height={45} resizeMode='cover' source={require("../../assets/icons/blood.webp")}/>
         </Pressable>
       </View>
     </ImageBackground>
@@ -92,24 +96,42 @@ const styles = StyleSheet.create({
     display: 'flex',
     alignItems: 'flex-end',
     justifyContent: 'center',
-    paddingHorizontal: 10,
-    rowGap: 10
+    rowGap: 25
+  },
+  settings: {
+    width: 45,
+    height: 45,
+  },
+  bullet: {
+    width: 22,
+    height: 52,
+  },
+  blood: {
+    width: 36,
+    height: 45,
   },
   button: {
-    width: '80%',
-    height: 50,
+    paddingHorizontal: 10,
+    gap: 20,
+    height: 60,
     backgroundColor: 'black',
-    color: 'red',
-    fontWeight: 'bold',
     display: "flex",
-    justifyContent: 'center',
+    flexDirection: "row",
+    justifyContent: 'space-between',
     alignItems: 'center',
-    borderRadius: 20
+    borderBottomLeftRadius: 20,
+    borderTopLeftRadius: 20,
   },
-  link: {
-    color: 'red',
+  startText: {
+    color: 'white',
+    fontWeight: 400,
+    fontSize: 43,
     textAlignVertical: 'center'
   },
-  text: {
+  settingText: {
+    color: 'white',
+    fontWeight: 400,
+    fontSize: 33,
+    textAlignVertical: 'center'
   }
 });
